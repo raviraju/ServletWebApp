@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class SimpleServlet
@@ -28,11 +29,16 @@ public class SimpleServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		System.out.println("hello from GET method");
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		response.setContentType("text/html");
+		String userName = request.getParameter("username");
+		HttpSession session = request.getSession();
+		if (userName != "" && userName != null){
+			session.setAttribute("savedUserName", userName);
+		}
 		PrintWriter pWriter = response.getWriter();
-		pWriter.println("<h3>Hello in html</h3>");
+		pWriter.println("Request parameter has username : " + userName);
+		pWriter.println("Session parameter has username : " + (String)session.getAttribute("savedUserName"));
+		
 	}
 
 }
