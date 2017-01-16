@@ -5,15 +5,23 @@
 <title>Simple Form Title</title>
 </head>
 <body>
- 
+
+<!--
 <form method="get" action="xmlServletPath">
 	<input name="username" />
 	<input type="Submit" name="GET"/>
 </form>
-
+-->
 
 <form method="post" action="xmlServletPath">
-	<input name="username" />
+	UserName : <input name="username" />
+	Password : <input name="password" />
+	Select 2 of mandatory courses:
+	<select name="courses" multiple size=2>
+		<option value="Math">Maths</option>
+		<option value="Science">Science</option>
+		<option value="Social">Social</option>
+	</select>
 	<input type="Submit" name="POST">
 </form>
 </body>

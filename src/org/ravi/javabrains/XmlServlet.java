@@ -18,8 +18,12 @@ public class XmlServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
 		String userName = request.getParameter("username");
+		String password = request.getParameter("password");
+		String[] courses = request.getParameterValues("courses");
 		PrintWriter pWriter = response.getWriter();
-		pWriter.println("Hello from POST method : " + userName);
+		pWriter.println("UserName : " + userName);
+		pWriter.println("Password : " + password);
+		pWriter.println("You have selected : " + courses.length + " courses");
 	}
 
 }
