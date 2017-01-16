@@ -10,10 +10,16 @@ import javax.servlet.http.HttpServletResponse;
 
 public class XmlServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("hello from GET method of XmlServlet");
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		response.setContentType("text/html");
+		String userName = request.getParameter("username");
 		PrintWriter pWriter = response.getWriter();
-		pWriter.println("<h3>XmlServlet</h3>");
+		pWriter.println("Hello from GET method : " + userName);
+	}
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html");
+		String userName = request.getParameter("username");
+		PrintWriter pWriter = response.getWriter();
+		pWriter.println("Hello from POST method : " + userName);
 	}
 
 }
